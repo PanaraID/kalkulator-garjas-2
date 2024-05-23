@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical Fitness Calculator</title>
+    <style>
+        .calculator {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .calculator h2 {
+            margin-top: 20px;
+        }
+
+        .calculator select,
+        .calculator input[type="number"] {
+            margin-bottom: 10px;
+        }
+
+        .calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        .calculator p.error-message {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root" class="calculator"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const calculator = document.querySelector('.calculator');
+
+            let gender = 'male';
+            let runDistance = '';
+            let pushUp = '';
+            let sitUp = '';
+            let pullUp = '';
+            let chiningUp = '';
+            let shuttleRun = '';
+            let swimTime = '';
+            let result = '';
+            let errorMessage = '';
+
+            function calculateDistance(gender, distance) {
+                let result = 0;
+                if (gender === 'male' && (distance >= 1349 && distance <= 3444)) {
+                    let difference = distance - 1349;
+                    result = Math.floor(difference / 21) + 1;
+                } else if (gender === 'female' && (distance >= 22 && distance <= 3095)) {
+                    let difference = distance - 1013;
+                    result = Math.floor(difference / 21) + 1;
+                }
+                return result;
+            }
+
+            function calculateScores() {
+                if (
+                    runDistance === '' ||
+                    pushUp === '' ||
+                    sitUp === '' ||
+                    (gender === 'male' && pullUp === '') ||
+                    (gender === 'female' && chiningUp === '') ||
+                    shuttleRun === '' ||
+                    swimTime === ''
+                ) {
+                    errorMessage = 'Mohon lengkapi semua input sebelum menghitung nilai.';
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    setResult('');
+                } else {
+                    errorMessage = '';
+
+                    const points = {};
+
+                    points['runDistance'] = calculateDistance(gender, runDistance);
+                    points['pushUp'] = parseFloat(pushUp) || 0;
+                    points['sitUp'] = parseFloat(sitUp) || 0;
+                    points['pullUp'] = parseFloat(gender === 'male' ? pullUp : 0) || 0;
+                    points['chiningUp'] = parseFloat(gender === 'female' ? chiningUp : 0) || 0;
+                    points['shuttleRun'] = parseFloat(shuttleRun) || 0;
+                    points['swimTime'] = parseFloat(swimTime) || 0;
+
+                    result = `
+        <div>
+          <h2>Hasil Perhitungan Nilai</h2>
+          <ol>
+            <li>Jarak Lari 12 Menit: ${runDistance} meter (${points['runDistance']} poin)</li>
+            <li>Jumlah Push-Up: ${pushUp} (${points['pushUp']} poin)</li>
+            <li>Jumlah Sit-Up: ${sitUp} (${points['sitUp']} poin)</li>
+            ${gender === 'male' ? `<li>Jumlah Pull-Up: ${pullUp} (${points['pullUp']} poin)</li>` : ''}
+            ${gender === 'female' ? `<li>Jumlah Chining-Up: ${chiningUp} (${points['chiningUp']} poin)</li>` : ''}
+            <li>Jumlah Shuttle Run: ${shuttleRun} (${points['shuttleRun']} poin)</li>
+            <li>Waktu Renang: ${swimTime} (${points['swimTime']} poin)</li>
+          </ol>
+        </div>
+        <div>
+          <h2>Keterangan</h2>
+          <ul>
+            <li>Jarak lari 12 menit
+              <ul>
+                <li>Laki-laki: minimal 1349 dan maksimal 3444</li>
+                <li>Perempuan: minimal 1013 dan maksimal 3095</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      `;
+                }
+
+                render();
+            }
+
+            function render() {
+                calculator.innerHTML = '';
+
+                if (errorMessage) {
+                    const errorElement = document.createElement('p');
+                    errorElement.classList.add('error-message');
+                    errorElement.textContent = errorMessage;
+                    calculator.appendChild(errorElement);
+                }
+
+                const genderSelect = document.createElement('select');
+                genderSelect.innerHTML = `
+      <option value="male" ${gender === 'male' ? 'selected' : ''}>Pria</option>
+      <option value="female" ${gender === 'female' ? 'selected' : ''}>Wanita</option>
+    `;
+                genderSelect.addEventListener('change', (e) => {
+                    gender = e.target.value;
+                });
+                calculator.appendChild(genderSelect);
+
+                const kesamapataanA = document.createElement('div');
+                kesamapataanA.innerHTML = `
+      <h2>Kesamapataan A</h2>
+      <label for="runDistance">Jarak Lari 12 Menit (meter):</label>
+      <input type="number" id="runDistance" value="${runDistance}" />
+    `;
+                kesamapataanA.querySelector('#runDistance').addEventListener('input', (e) => {
+                    runDistance = e.target.value;
+                });
+                calculator.appendChild(kesamapataanA);
+
+                const kesamapataanB = document.createElement('div');
+                kesamapataanB.innerHTML = `
+      <h2>Kesamapataan B</h2>
+      <label for="pushUp">Jumlah Push-Up:</label>
+      <input type="number" id="pushUp" value="${pushUp}" />
+
+      <label for="sitUp">Jumlah Sit-Up (dalam 1 menit):</label>
+      <input type="number" id="sitUp" value="${sitUp}" />
+    `;
+                kesamapataanB.querySelector('#pushUp').addEventListener('input', (e) => {
+                    pushUp = e.target.value;
+                });
+                kesamapataanB.querySelector('#sitUp').addEventListener('input', (e) => {
+                    sitUp = e.target.value;
+                });
+                if (gender === 'male') {
+                    kesamapataanB.innerHTML += `
+        <label for="pullUp">Jumlah Pull-Up (dalam 1 menit):</label>
+        <input type="number" id="pullUp" value="${pullUp}" />
+      `;
+                    kesamapataanB.querySelector('#pullUp').addEventListener('input', (e) => {
+                        pullUp = e.target.value;
+                    });
+                } else {
+                    kesamapataanB.innerHTML += `
+        <label for="chiningUp">Jumlah Chining-Up (1 menit):</label>
+        <input type="number" id="chiningUp" value="${chiningUp}" />
+      `;
+                    kesamapataanB.querySelector('#chiningUp').addEventListener('input', (e) => {
+                        chiningUp = e.target.value;
+                    });
+                }
+                kesamapataanB.innerHTML += `
+      <label for="shuttleRun">Jumlah Shuttle Run:</label>
+      <input type="number" id="shuttleRun" value="${shuttleRun}" />
+    `;
+                kesamapataanB.querySelector('#shuttleRun').addEventListener('input', (e) => {
+                    shuttleRun = e.target.value;
+                });
+                calculator.appendChild(kesamapataanB);
+
+                const kesamapataanC = document.createElement('div');
+                kesamapataanC.innerHTML = `
+      <h2>Kesamapataan C</h2>
+      <label for="swimTime">Renang:</label>
+      <input type="number" id="swimTime" value="${swimTime}" />
+    `;
+                kesamapataanC.querySelector('#swimTime').addEventListener('input', (e) => {
+                    swimTime = e.target.value;
+                });
+                calculator.appendChild(kesamapataanC);
+
+                const calculateButton = document.createElement('button');
+                calculateButton.textContent = 'Hitung Nilai';
+                calculateButton.addEventListener('click', calculateScores);
+                calculator.appendChild(calculateButton);
+
+                const resultContainer = document.createElement('div');
+                resultContainer.id = 'result';
+                resultContainer.innerHTML = result;
+                calculator.appendChild(resultContainer);
+            }
+
+            render();
+        });
+    </script>
+</body>
+
+</html>
