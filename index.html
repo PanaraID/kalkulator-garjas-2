@@ -116,6 +116,17 @@
       return result;
     }
 
+    function genderOnChange() {
+      const gender = document.getElementById('gender').value;
+      if (gender ==='male') {
+        // TODO memunculkan situp
+      } else if (gender === 'female') {
+        // TODO memunculkan chiningup
+      }
+    }
+
+    document.getElementById('gender').onchange(genderOnChange);
+
     function calculateScores() {
       // TODO
       const gender = document.getElementById('gender').value;
@@ -123,6 +134,7 @@
       const pushUp = parseFloat(document.getElementById('pushUp').value) || 0;
       const sitUp = parseFloat(document.getElementById('sitUp').value) || 0;
       const pullUp = parseFloat(document.getElementById('pullUp').value) || 0;
+      // TODO: menambahkan chining up
       const shuttleRun = parseFloat(document.getElementById('shuttleRun').value) || 0;
       const swimTime = parseFloat(document.getElementById('swimTime').value) || 0;
 
