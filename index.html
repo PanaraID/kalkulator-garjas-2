@@ -138,8 +138,6 @@
       const shuttleRun = parseFloat(document.getElementById('shuttleRun').value) || 0;
       const swimTime = parseFloat(document.getElementById('swimTime').value) || 0;
 
-      document.getElementById('errorMessage').innerText = '';
-
       const points = {};
 
       points['runDistance'] = calculateDistance(gender, runDistance);
