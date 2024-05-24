@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physical Fitness Calculator</title>
+  <title>Kalkulator Garjas</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -65,8 +65,6 @@
 
 <body>
   <div class="calculator">
-    <p id="errorMessage" style="color: red;"></p>
-
     <h2>Pilih Jenis Kelamin</h2>
     <select id="gender">
       <option value="male">Pria</option>
@@ -119,6 +117,7 @@
     }
 
     function calculateScores() {
+      // TODO
       const gender = document.getElementById('gender').value;
       const runDistance = parseFloat(document.getElementById('runDistance').value) || 0;
       const pushUp = parseFloat(document.getElementById('pushUp').value) || 0;
@@ -127,29 +126,18 @@
       const shuttleRun = parseFloat(document.getElementById('shuttleRun').value) || 0;
       const swimTime = parseFloat(document.getElementById('swimTime').value) || 0;
 
-      if (
-        isNaN(runDistance) ||
-        isNaN(pushUp) ||
-        isNaN(sitUp) ||
-        isNaN(pullUp) ||
-        isNaN(shuttleRun) ||
-        isNaN(swimTime)
-      ) {
-        document.getElementById('errorMessage').innerText = 'Mohon lengkapi semua input sebelum menghitung nilai.';
-        return;
-      } else {
-        document.getElementById('errorMessage').innerText = '';
+      document.getElementById('errorMessage').innerText = '';
 
-        const points = {};
+      const points = {};
 
-        points['runDistance'] = calculateDistance(gender, runDistance);
-        points['pushUp'] = pushUp;
-        points['sitUp'] = sitUp;
-        points['pullUp'] = gender === 'male' ? pullUp : 0;
-        points['shuttleRun'] = shuttleRun;
-        points['swimTime'] = swimTime;
+      points['runDistance'] = calculateDistance(gender, runDistance);
+      points['pushUp'] = pushUp;
+      points['sitUp'] = sitUp;
+      points['pullUp'] = gender === 'male' ? pullUp : 0;
+      points['shuttleRun'] = shuttleRun;
+      points['swimTime'] = swimTime;
 
-        document.getElementById('result').innerHTML = `
+      document.getElementById('result').innerHTML = `
           <div>
             <h2>Hasil Perhitungan Nilai</h2>
             <ol>
@@ -173,7 +161,6 @@
             </ul>
           </div>
         `;
-      }
     }
   </script>
 </body>
