@@ -22,6 +22,10 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
+    .d-none {
+      display: none;
+    }
+
     h2 {
       margin-top: 20px;
       margin-bottom: 10px;
@@ -85,8 +89,15 @@
       <label for="sitUp">Jumlah Sit-Up (dalam 1 menit):</label>
       <input type="number" id="sitUp" />
 
-      <label for="pullUp">Jumlah Pull-Up (dalam 1 menit):</label>
-      <input type="number" id="pullUp" />
+      <div id="inputPullUp" class="d-none">
+        <label for="pullUp">Jumlah Pull-Up (dalam 1 menit):</label>
+        <input type="number" id="pullUp" />
+      </div>
+
+      <div id="inputChiningUp" class="d-none">
+        <label for="chiningUp">Jumlah Chining-Up (dalam 1 menit):</label>
+        <input type="number" id="chiningUp" />
+      </div>
 
       <label for="shuttleRun">Jumlah Shuttle Run:</label>
       <input type="number" id="shuttleRun" />
@@ -117,24 +128,47 @@
     }
 
     function genderOnChange() {
+      function hidePullUp() {
+        document.getElementById('inputPullUp').classList.add("d-none");
+        document.getElementById('resultPullUp').classList.add("d-none");
+      }
+
+      function showPullUp() {
+        document.getElementById('inputPullUp').classList.remove("d-none");
+        document.getElementById('resultPullUp').classList.remove("d-none");
+      }
+
+      function hideChiningUp() {
+        document.getElementById('inputChiningUp').classList.add("d-none");
+        document.getElementById('resultChiningUp').classList.add("d-none");
+      }
+
+      function showChiningUp() {
+        document.getElementById('inputChiningUp').classList.remove("d-none");
+        document.getElementById('resultChiningUp').classList.remove("d-none");
+      }
+
       const gender = document.getElementById('gender').value;
+      calculateScores();
+
       if (gender ==='male') {
-        // TODO memunculkan situp
+        hideChiningUp();
+        showPullUp();
       } else if (gender === 'female') {
-        // TODO memunculkan chiningup
+        hidePullUp();
+        showChiningUp();
       }
     }
 
     document.getElementById('gender').onchange = genderOnChange;
 
     function calculateScores() {
-      // TODO
       const gender = document.getElementById('gender').value;
       const runDistance = parseFloat(document.getElementById('runDistance').value) || 0;
       const pushUp = parseFloat(document.getElementById('pushUp').value) || 0;
       const sitUp = parseFloat(document.getElementById('sitUp').value) || 0;
       const pullUp = parseFloat(document.getElementById('pullUp').value) || 0;
-      // TODO: menambahkan chining up
+      const chiningUp = parseFloat(document.getElementById('chiningUp').value) || 0;
       const shuttleRun = parseFloat(document.getElementById('shuttleRun').value) || 0;
       const swimTime = parseFloat(document.getElementById('swimTime').value) || 0;
 
@@ -144,6 +178,7 @@
       points['pushUp'] = pushUp;
       points['sitUp'] = sitUp;
       points['pullUp'] = gender === 'male' ? pullUp : 0;
+      points['chiningUp'] = gender === 'female' ? chiningUp : 0;
       points['shuttleRun'] = shuttleRun;
       points['swimTime'] = swimTime;
 
@@ -154,7 +189,8 @@
               <li>Jarak Lari 12 Menit: ${runDistance} meter (${points['runDistance']} poin)</li>
               <li>Jumlah Push-Up: ${pushUp} (${points['pushUp']} poin)</li>
               <li>Jumlah Sit-Up: ${sitUp} (${points['sitUp']} poin)</li>
-              <li>Jumlah Pull-Up: ${pullUp} (${points['pullUp']} poin)</li>
+              <li id="resultPullUp" class="d-none">Jumlah Pull-Up: ${pullUp} (${points['pullUp']} poin)</li>
+              <li id="resultChiningUp" class="d-none">Jumlah Chining-Up: ${pullUp} (${points['pullUp']} poin)</li>
               <li>Jumlah Shuttle Run: ${shuttleRun} (${points['shuttleRun']} poin)</li>
               <li>Waktu Renang: ${swimTime} (${points['swimTime']} poin)</li>
             </ol>
