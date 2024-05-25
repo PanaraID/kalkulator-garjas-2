@@ -162,6 +162,16 @@
 
     document.getElementById('gender').onchange = genderOnChange;
 
+    function calculatePushUp(pushUp, gender) {
+      let result = 0;
+      if (gender ==='male' && (pushUp >= 1 && pushUp <= 43)) {
+        // TODO
+      } else if (gender === 'female' && (pushUp >= 1 && pushUp <= 37)) {
+        // TODO
+      }
+      return result;
+    }
+
     function calculateScores() {
       const gender = document.getElementById('gender').value;
       const runDistance = parseFloat(document.getElementById('runDistance').value) || 0;
@@ -175,7 +185,7 @@
       const points = {};
 
       points['runDistance'] = calculateDistance(gender, runDistance);
-      points['pushUp'] = pushUp;
+      points['pushUp'] = calculatePushUp(pushUp, gender);
       points['sitUp'] = sitUp;
       points['pullUp'] = gender === 'male' ? pullUp : 0;
       points['chiningUp'] = gender === 'female' ? chiningUp : 0;
