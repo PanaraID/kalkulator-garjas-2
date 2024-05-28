@@ -418,6 +418,16 @@
       return result;
     }
 
+    function calculateSwimTime(swimTime, gender) {
+      let result = 0;
+      if (gender === 'male' && (swimTime >= 1 && swimTime <= 43)) {
+        // TODO
+      } else if (gender === 'female' && (swimTime >= 1 && swimTime <= 37)) {
+        // TODO
+      }
+      return result;
+    }
+
     function calculateScores() {
       const gender = document.getElementById('gender').value;
       const runDistance = parseFloat(document.getElementById('runDistance').value) || 0;
@@ -436,7 +446,7 @@
       points['pullUp'] = calculatePullUp(pullUp, gender)
       points['chiningUp'] = gender === 'female' ? chiningUp : 0;
       points['shuttleRun'] = shuttleRun;
-      points['swimTime'] = swimTime;
+      points['swimTime'] = calculateSwimTime(swimTime, gender);
 
       document.getElementById('result').innerHTML = `
           <div>
