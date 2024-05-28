@@ -115,18 +115,6 @@
   </div>
 
   <script>
-    function calculateDistance(gender, distance) {
-      let result = 0;
-      if (gender === 'male' && (distance >= 1349 && distance <= 3444)) {
-        let difference = distance - 1349;
-        result = Math.floor(difference / 21) + 1;
-      } else if (gender === 'female' && (distance >= 22 && distance <= 3095)) {
-        let difference = distance - 1013;
-        result = Math.floor(difference / 21) + 1;
-      }
-      return result;
-    }
-
     function genderOnChange() {
       function hidePullUp() {
         document.getElementById('inputPullUp').classList.add("d-none");
@@ -161,6 +149,18 @@
     }
 
     document.getElementById('gender').onchange = genderOnChange;
+
+    function calculateDistance(gender, distance) {
+      let result = 0;
+      if (gender === 'male' && (distance >= 1349 && distance <= 3444)) {
+        let difference = distance - 1349;
+        result = Math.floor(difference / 21) + 1;
+      } else if (gender === 'female' && (distance >= 22 && distance <= 3095)) {
+        let difference = distance - 1013;
+        result = Math.floor(difference / 21) + 1;
+      }
+      return result;
+    }
 
     function calculatePushUp(pushUp, gender) {
       let result = 0;
