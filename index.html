@@ -107,13 +107,12 @@
       <h2>Kesamapataan C</h2>
       <label for="swimTime">Renang:</label>
       <div id="option-swimtime-male">
-        
-      <select name="swimTime" id="swimTime">
-        <option value="cowok">cowok</option>
-      </select>
+        <select name="swimTime" id="swimTimeMale">
+          <option value="cowok">cowok</option>
+        </select>
       </div>
       <div id="option-swimtime-female" class="d-none">
-        <select name="swimTime" id="swimTime">
+        <select name="swimTime" id="swimTimeFemale">
           <option value="cewek">cewek</option>
         </select>
       </div>
@@ -533,17 +532,6 @@
       return result;
     }
 
-    function calculateSwimTime(swimTime, gender) {
-      alert(swimTime)
-      let result = 0;
-      if (gender === 'male' && (swimTime >= 1 && swimTime <= 43)) {
-        // TODO
-      } else if (gender === 'female' && (swimTime >= 1 && swimTime <= 37)) {
-        // TODO
-      }
-      return result;
-    }
-
     function calculateChinning(chiningUp) {
       let result = 0;
       if (chiningUp >= 33 && chiningUp <= 72) {
@@ -680,12 +668,6 @@
       const sitUp = parseFloat(document.getElementById('sitUp').value) || 0;
       const pullUp = parseFloat(document.getElementById('pullUp').value) || 0;
       const chiningUp = parseFloat(document.getElementById('chiningUp').value) || 0;
-      const shuttleRun = parseFloat(document.getElementById('shuttleRun').value) || 0;
-
-      // Swim 
-      // TODO susah nih, sama shuttle run
-      const swimTime = parseFloat(document.getElementById('swimTime').value) || 0;
-      console.log(document.getElementById('swimTime').value)
 
       const points = {};
 
@@ -694,8 +676,21 @@
       points['sitUp'] = calculateSitUp(sitUp, gender);
       points['pullUp'] = calculatePullUp(pullUp)
       points['chiningUp'] = calculateChinning(chiningUp)
-      points['shuttleRun'] = shuttleRun;
-      points['swimTime'] = calculateSwimTime(swimTime, gender);
+
+      /*Untuk renang dan shuttle run tidak ada kalkulasi di function
+      // melainkan sudah tertera valuenya di options.
+      */
+      let shuttleRun = undefined;
+      points['shuttleRun'] = undefined;
+
+      let swimTime = undefined;
+      points['swimTime'] = undefined;
+
+      if (gender === 'male') {
+        swimTime = document.getElementById('swimTimeMale').value;
+      } else if (gender === 'female') {
+        swimTime = document.getElementById('swimTimeFemale').value;
+      }
 
       function setResult() {
         document.getElementById("distance").innerHTML = `${runDistance} meter (${points['runDistance']} poin)`;
