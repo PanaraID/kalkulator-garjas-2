@@ -428,6 +428,135 @@
       return result;
     }
 
+    function calculateChinning(chiningUp) {
+      let result = 0;
+      if (chiningUp >= 33 && chiningUp <= 72) {
+        switch (chiningUp) {
+          case 33:
+            result = 2;
+            break;
+          case 34:
+            result = 5;
+            break;
+          case 35:
+            result = 7;
+            break;
+          case 36:
+            result = 10;
+            break;
+          case 37:
+            result = 12;
+            break;
+          case 38:
+            result = 15;
+            break;
+          case 39:
+            result = 17;
+            break;
+          case 40:
+            result = 20;
+            break;
+          case 41:
+            result = 22;
+            break;
+          case 42:
+            result = 25;
+            break;
+          case 43:
+            result = 27;
+            break;
+          case 44:
+            result = 30;
+            break;
+          case 45:
+            result = 32;
+            break
+          case 46:
+            result = 35;
+            break;
+          case 47:
+            result = 37;
+            break;
+          case 48:
+            result = 40;
+            break;
+          case 49:
+            result = 42;
+            break;
+          case 50:
+            result = 45;
+            break;
+          case 51:
+            result = 47;
+            break;
+          case 52:
+            result = 50;
+            break;
+          case 53:
+            result = 52;
+            break;
+          case 54:
+            result = 55;
+            break;
+          case 55:
+            result = 57;
+            break;
+          case 56:
+            result = 60;
+            break;
+          case 57:
+            result = 62;
+            break
+          case 58:
+            result = 65;
+            break;
+          case 59:
+            result = 67;
+            break;
+          case 60:
+            result = 70;
+            break;
+          case 61:
+            result = 72;
+            break;
+          case 62:
+            result = 75;
+            break;
+          case 63:
+            result = 77;
+            break;
+          case 64:
+            result = 80;
+            break;
+          case 65:
+            result = 82;
+            break;
+          case 66:
+            result = 85;
+            break;
+          case 67:
+            result = 87;
+            break
+          case 68:
+            result = 90;
+            break;
+          case 69:
+            result = 92;
+            break;
+          case 70:
+            result = 95;
+            break;
+          case 71:
+            result = 97;
+            break;
+          case 72:
+            result = 100;
+            break;
+        }
+      }
+      return result;
+    }
+
     function calculateScores() {
       const gender = document.getElementById('gender').value;
       const runDistance = parseFloat(document.getElementById('runDistance').value) || 0;
@@ -444,7 +573,7 @@
       points['pushUp'] = calculatePushUp(pushUp, gender);
       points['sitUp'] = calculateSitUp(sitUp, gender);
       points['pullUp'] = calculatePullUp(pullUp, gender)
-      points['chiningUp'] = gender === 'female' ? chiningUp : 0;
+      points['chiningUp'] = calculateChinning(chiningUp)
       points['shuttleRun'] = shuttleRun;
       points['swimTime'] = calculateSwimTime(swimTime, gender);
 
@@ -474,6 +603,11 @@
                 <ul>
                   <li>Laki-laki: minimal 1 dan maksimal 43</li>
                   <li>Perempuan: minimal 1 dan maksimal 37</li>
+                </ul>
+              </li>
+              <li>Chinning
+                <ul>
+                  <li>Perempuan: minimal 33 dan maksimal 72</li>
                 </ul>
               </li>
             </ul>
