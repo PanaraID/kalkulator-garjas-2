@@ -111,7 +111,47 @@
 
     <button onclick="calculateScores()">Hitung Nilai</button>
 
-    <div id="result"></div>
+    <div id="result">
+      <div>
+        <h2>Hasil Perhitungan Nilai</h2>
+        <ol>
+          <li>Jarak Lari 12 Menit: <span id="distance"></span></li>
+          <li>Jumlah Push-Up: <span id="pushup"></span></li>
+          <li>Jumlah Sit-Up: <span id="situp"></span></li>
+          <li id="resultPullUp">Jumlah Pull-Up: <span id="pullup"></span></li>
+          <li id="resultChiningUp" class="d-none">Jumlah Chining-Up: <span id="chiningup"></span></li>
+          <li>Jumlah Shuttle Run: <span id="shuttlerun"></span></li>
+          <li>Waktu Renang: <span id="swimtime"></span></li>
+        </ol>
+      </div>
+      <div>
+        <h2>Keterangan</h2>
+        <ul>
+          <li>Jarak lari 12 menit
+            <ul>
+              <li>Laki-laki: minimal 1349 dan maksimal 3444</li>
+              <li>Perempuan: minimal 1013 dan maksimal 3095</li>
+            </ul>
+          </li>
+          <li>Pushup
+            <ul>
+              <li>Laki-laki: minimal 1 dan maksimal 43</li>
+              <li>Perempuan: minimal 1 dan maksimal 37</li>
+            </ul>
+          </li>
+          <li>Pull up
+            <ul>
+              <li>Laki-laki: minimal 1</li>
+            </ul>
+          </li>
+          <li>Chinning
+            <ul>
+              <li>Perempuan: minimal 33 dan maksimal 72</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -464,7 +504,7 @@
             result = 100;
             break;
           default:
-            result = result >= 17 ?  100 : 0;
+            result = result >= 17 ? 100 : 0;
             break;
         }
       }
@@ -630,47 +670,19 @@
       points['shuttleRun'] = shuttleRun;
       points['swimTime'] = calculateSwimTime(swimTime, gender);
 
-      document.getElementById('result').innerHTML = `
-          <div>
-            <h2>Hasil Perhitungan Nilai</h2>
-            <ol>
-              <li>Jarak Lari 12 Menit: ${runDistance} meter (${points['runDistance']} poin)</li>
-              <li>Jumlah Push-Up: ${pushUp} (${points['pushUp']} poin)</li>
-              <li>Jumlah Sit-Up: ${sitUp} (${points['sitUp']} poin)</li>
-              <li id="resultPullUp">Jumlah Pull-Up: ${pullUp} (${points['pullUp']} poin)</li>
-              <li id="resultChiningUp" class="d-none">Jumlah Chining-Up: ${pullUp} (${points['pullUp']} poin)</li>
-              <li>Jumlah Shuttle Run: ${shuttleRun} (${points['shuttleRun']} poin)</li>
-              <li>Waktu Renang: ${swimTime} (${points['swimTime']} poin)</li>
-            </ol>
-          </div>
-          <div>
-            <h2>Keterangan</h2>
-            <ul>
-              <li>Jarak lari 12 menit
-                <ul>
-                  <li>Laki-laki: minimal 1349 dan maksimal 3444</li>
-                  <li>Perempuan: minimal 1013 dan maksimal 3095</li>
-                </ul>
-              </li>
-              <li>Pushup
-                <ul>
-                  <li>Laki-laki: minimal 1 dan maksimal 43</li>
-                  <li>Perempuan: minimal 1 dan maksimal 37</li>
-                </ul>
-              </li>
-              <li>Pull up
-                <ul>
-                  <li>Laki-laki: minimal 1</li>
-                </ul>
-              </li>
-              <li>Chinning
-                <ul>
-                  <li>Perempuan: minimal 33 dan maksimal 72</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        `;
+      function setResult() {
+        document.getElementById("distance").innerHTML = `${runDistance} meter (${points['runDistance']} poin)`;
+        document.getElementById("pushup").innerHTML = `${pushUp} (${points['pushUp']} poin)`;
+        document.getElementById("situp").innerHTML = `${sitUp} (${points['sitUp']} poin)`;
+
+        document.getElementById("pullup").innerHTML = `${pullUp} (${points['pullUp']} poin)`;
+        document.getElementById("cginingup").innerHTML = `${chiningUp} (${points['chiningUp']} poin)`;
+
+        document.getElementById("shuttlerun").innerHTML = `${shuttleRun} (${points['shuttleRun']} poin)`;
+        document.getElementById("swimtime").innerHTML = `${swimTime} (${points['swimTime']} poin)`;
+      }
+
+      setResult();
     }
   </script>
 </body>
