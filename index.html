@@ -106,7 +106,17 @@
     <div>
       <h2>Kesamapataan C</h2>
       <label for="swimTime">Renang:</label>
-      <input type="number" id="swimTime" />
+      <div id="option-swimtime-male">
+        
+      <select name="swimTime" id="swimTime">
+        <option value="cowok">cowok</option>
+      </select>
+      </div>
+      <div id="option-swimtime-female" class="d-none">
+        <select name="swimTime" id="swimTime">
+          <option value="cewek">cewek</option>
+        </select>
+      </div>
     </div>
 
     <button onclick="calculateScores()">Hitung Nilai</button>
@@ -176,15 +186,27 @@
         document.getElementById('resultChiningUp').classList.remove("d-none");
       }
 
+      function maleSwimTime() {
+        document.getElementById('option-swimtime-male').classList.remove("d-none");
+        document.getElementById('option-swimtime-female').classList.add("d-none");
+      }
+
+      function femaleSwimTime() {
+        document.getElementById('option-swimtime-female').classList.remove("d-none");
+        document.getElementById('option-swimtime-male').classList.add("d-none");
+      }
+
       const gender = document.getElementById('gender').value;
       calculateScores();
 
       if (gender === 'male') {
         hideChiningUp();
         showPullUp();
+        maleSwimTime();
       } else if (gender === 'female') {
         hidePullUp();
         showChiningUp();
+        femaleSwimTime();
       }
     }
 
@@ -512,6 +534,7 @@
     }
 
     function calculateSwimTime(swimTime, gender) {
+      alert(swimTime)
       let result = 0;
       if (gender === 'male' && (swimTime >= 1 && swimTime <= 43)) {
         // TODO
@@ -658,7 +681,11 @@
       const pullUp = parseFloat(document.getElementById('pullUp').value) || 0;
       const chiningUp = parseFloat(document.getElementById('chiningUp').value) || 0;
       const shuttleRun = parseFloat(document.getElementById('shuttleRun').value) || 0;
+
+      // Swim 
+      // TODO susah nih, sama shuttle run
       const swimTime = parseFloat(document.getElementById('swimTime').value) || 0;
+      console.log(document.getElementById('swimTime').value)
 
       const points = {};
 
@@ -676,7 +703,7 @@
         document.getElementById("situp").innerHTML = `${sitUp} (${points['sitUp']} poin)`;
 
         document.getElementById("pullup").innerHTML = `${pullUp} (${points['pullUp']} poin)`;
-        document.getElementById("cginingup").innerHTML = `${chiningUp} (${points['chiningUp']} poin)`;
+        document.getElementById("chiningup").innerHTML = `${chiningUp} (${points['chiningUp']} poin)`;
 
         document.getElementById("shuttlerun").innerHTML = `${shuttleRun} (${points['shuttleRun']} poin)`;
         document.getElementById("swimtime").innerHTML = `${swimTime} (${points['swimTime']} poin)`;
