@@ -220,8 +220,9 @@
     function calculateDistance(gender, distance) {
       let result = 0;
       if (gender === 'male' && (distance >= 1349 && distance <= 3444)) {
-        let difference = distance - 1349;
-        result = Math.floor(difference / 21) + 1;
+        if (distance >= 1349 && distance < 1371) result = 1;
+        if (distance >= 1371 && distance < 1392) result = 2;
+        if (distance >= 1392 && distance < 1413) result = 3;
       } else if (gender === 'female' && (distance >= 22 && distance <= 3095)) {
         let difference = distance - 1013;
         result = Math.floor(difference / 21) + 1;
