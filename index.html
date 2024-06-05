@@ -230,6 +230,11 @@
         if (distance >= 1497 && distance < 1518) result = 8;
         if (distance >= 1518 && distance < 1539) result = 9;
         if (distance >= 1539 && distance < 1561) result = 10;
+
+        if (distance >= 1561 && distance < 1582) result = 11;
+        if (distance >= 1582 && distance < 1603) result = 12;
+        if (distance >= 1603 && distance < 1625) result = 13;
+        if (distance >= 1625 && distance < 1645) result = 14;
       } else if (gender === 'female' && (distance >= 22 && distance <= 3095)) {
         let difference = distance - 1013;
         result = Math.floor(difference / 21) + 1;
@@ -794,8 +799,8 @@
       points['runDistance'] = calculateDistance(gender, runDistance);
       points['pushUp'] = calculatePushUp(pushUp, gender);
       points['sitUp'] = calculateSitUp(sitUp, gender);
-      points['pullUp'] = calculatePullUp(pullUp)
-      points['chiningUp'] = calculateChinning(chiningUp)
+      points['pullUp'] = calculatePullUp(pullUp);
+      points['chiningUp'] = calculateChinning(chiningUp);
 
       /*Untuk renang dan shuttle run tidak ada kalkulasi di function
       // melainkan sudah tertera valuenya di options.
