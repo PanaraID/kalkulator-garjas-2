@@ -295,6 +295,25 @@
         if (distance >= 2725 && distance < 2746) result = 65;
         if (distance >= 2746 && distance < 2767) result = 66;
         if (distance >= 2767 && distance < 2788) result = 67;
+        if (distance >= 2788 && distance < 2809) result = 68;
+        if (distance >= 2809 && distance < 2820) result = 69;
+        if (distance >= 2820 && distance < 2851) result = 70;
+        if (distance >= 2851 && distance < 2872) result = 71;
+        if (distance >= 2872 && distance < 2893) result = 72;
+        if (distance >= 2893 && distance < 2914) result = 73;
+        if (distance >= 2914 && distance < 2936) result = 74;
+        if (distance >= 2936 && distance < 2957) result = 75;
+        if (distance >= 2957 && distance < 2978) result = 76;
+        if (distance >= 2978 && distance < 2999) result = 77;
+        if (distance >= 2999 && distance < 3021) result = 78;
+        if (distance >= 3021 && distance < 3041) result = 79;
+        if (distance >= 3041 && distance < 3062) result = 80;
+        if (distance >= 3062 && distance < 3084) result = 81;
+        if (distance >= 3084 && distance < 3105) result = 82;
+        if (distance >= 3105 && distance < 3126) result = 83;
+        if (distance >= 3126 && distance < 3148) result = 84;
+        if (distance >= 3148 && distance < 3169) result = 85;
+
       } else if (gender === 'female' && (distance >= 22 && distance <= 3095)) {
         let difference = distance - 1013;
         result = Math.floor(difference / 21) + 1;
@@ -856,6 +875,7 @@
 
       const points = {};
 
+      // FIXME
       points['runDistance'] = calculateDistance(gender, runDistance);
       points['pushUp'] = calculatePushUp(pushUp, gender);
       points['sitUp'] = calculateSitUp(sitUp, gender);

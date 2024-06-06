@@ -9,3 +9,5 @@ ada angka yang terlewati; contoh:
 - 14 poin 6
 Nah angka 12-13 ini tidak ada, lantas bagaimana?
 maka solusinya adalah menggunakan options saja daripada input number.
+
+Tidak, karena yang diminta itu berupa input number saja.
