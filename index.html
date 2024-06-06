@@ -276,6 +276,10 @@
         if (distance >= 2470 && distance < 2491) result = 54;
         if (distance >= 2491 && distance < 2513) result = 55;
 
+        if (distance >= 2513 && distance < 2534) result = 56;
+        if (distance >= 2534 && distance < 2555) result = 57;
+        if (distance >= 2555 && distance < 2576) result = 58;
+
       } else if (gender === 'female' && (distance >= 22 && distance <= 3095)) {
         let difference = distance - 1013;
         result = Math.floor(difference / 21) + 1;
