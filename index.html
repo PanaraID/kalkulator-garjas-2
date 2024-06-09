@@ -46,12 +46,12 @@
       const [distance, setDistance] = props.distance;
 
       return (
-        <React.Fragment>
+        <div className="card p-2 m-2">
           <h4>Kesemapataan A</h4>
           <label htmlFor="distance" className="form-label">Jarak</label>
           <input type="number" className="form-control" id="distance" aria-describedby="distanceHelp" defaultValue={distance} onChange={e => setDistance(e.target.value)} />
           <div id="distanceHelp" className="form-text">We'll never share your email with anyone else.</div>
-        </React.Fragment>
+        </div>
       )
     }
   </script>
@@ -61,19 +61,28 @@
       const [pushup, setPushup] = props.pushup;
 
       return (
-        <React.Fragment>
+        <div className="card p-2 m-2">
           <h4>Kesemapataan B</h4>
           <label htmlFor="pushup" className="form-label">Push Up</label>
           <input type="number" className="form-control" id="pushup" aria-describedby="pushupHelp" defaultValue={pushup} onChange={e => setPushup(e.target.value)} />
           <div id="pushupHelp" className="form-text">We'll never share your email with anyone else.</div>
-        </React.Fragment>
+        </div>
       )
     }
   </script>
 
   <script type="text/babel">
     function KesemapataanC(props) {
+      const [swim, setSwim] = props.swim;
 
+      return (
+        <div className="card p-2 m-2">
+          <h4>Kesemapataan C</h4>
+          <label htmlFor="swim" className="form-label">Renang</label>
+          <input type="number" className="form-control" id="swim" aria-describedby="swimHelp" defaultValue={swim} onChange={e => setSwim(e.target.value)} />
+          <div id="swimHelp" className="form-text">We'll never share your email with anyone else.</div>
+        </div>
+      )
     }
   </script>
 
@@ -82,18 +91,21 @@
       const [gender, setGender] = React.useState(() => localStorage.getItem("gender") || "pria");
       const [distance, setDistance] = React.useState(() => localStorage.getItem("distance") || 0);
       const [pushup, setPushup] = React.useState(() => localStorage.getItem("pushup") || 0);
+      const [swim, setSwim] = React.useState(() => localStorage.getItem("swim") || 0);
 
       React.useEffect(() => {
         localStorage.setItem("gender", gender);
         localStorage.setItem("distance", distance);
         localStorage.setItem("pushup", pushup);
-      }, [gender, distance, pushup]);
+        localStorage.setItem("swim", swim);
+      }, [gender, distance, pushup, swim]);
 
       return (
         <React.Fragment>
           <InputGender gender={gender} setGender={setGender} />
           <KesemapataanA distance={[distance, setDistance]} />
           <KesemapataanB pushup={[pushup, setPushup]} />
+          <KesemapataanC swim={[swim, setSwim]} />
         </React.Fragment>
       )
     }
