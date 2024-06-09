@@ -86,12 +86,23 @@
     }
   </script>
 
+<script type="text/babel">
+  function Result(props) {
+    return (
+      <div className="card p-2 m-2">
+        <h4>Hasil</h4>
+      </div>
+    )
+  }
+</script>
+
   <script type="text/babel">
     function App() {
       const [gender, setGender] = React.useState(() => localStorage.getItem("gender") || "pria");
       const [distance, setDistance] = React.useState(() => localStorage.getItem("distance") || 0);
       const [pushup, setPushup] = React.useState(() => localStorage.getItem("pushup") || 0);
       const [swim, setSwim] = React.useState(() => localStorage.getItem("swim") || 0);
+      const [result, setResult] = React.useState(false);
 
       React.useEffect(() => {
         localStorage.setItem("gender", gender);
@@ -106,6 +117,9 @@
           <KesemapataanA distance={[distance, setDistance]} />
           <KesemapataanB pushup={[pushup, setPushup]} />
           <KesemapataanC swim={[swim, setSwim]} />
+          <hr />
+          <button className="btn btn-primary" onClick={() => setResult(true)}>Hitung</button>
+          {result && <Result />}
         </React.Fragment>
       )
     }
