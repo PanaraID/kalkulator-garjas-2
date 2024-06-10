@@ -51,6 +51,7 @@
           <label htmlFor="distance" className="form-label">Jarak</label>
           <input type="number" className="form-control" id="distance" aria-describedby="distanceHelp" defaultValue={distance} onChange={e => setDistance(e.target.value)} />
           <div id="distanceHelp" className="form-text">We'll never share your email with anyone else.</div>
+
         </div>
       )
     }
@@ -86,16 +87,6 @@
     }
   </script>
 
-<script type="text/babel">
-  function Result(props) {
-    return (
-      <div className="card p-2 m-2">
-        <h4>Hasil</h4>
-      </div>
-    )
-  }
-</script>
-
   <script type="text/babel">
     function App() {
       const [gender, setGender] = React.useState(() => localStorage.getItem("gender") || "pria");
@@ -119,7 +110,6 @@
           <KesemapataanC swim={[swim, setSwim]} />
           <hr />
           <button className="btn btn-primary" onClick={() => setResult(true)}>Hitung</button>
-          {result && <Result />}
         </React.Fragment>
       )
     }
