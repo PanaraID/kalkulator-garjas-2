@@ -1,1 +1,0 @@
-minify index.html > result.html
