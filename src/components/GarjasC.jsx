@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import AppContext from '../context/AppContext'
 import FormGroup from './partials/FormGroup'
 
-import SWIM from '../finals/SWIM'
+import SWIM from '../finals/garjas-c/SWIM'
 import GarjasHeader from './partials/GarjasHeader'
 
 const GarjasC = () => {

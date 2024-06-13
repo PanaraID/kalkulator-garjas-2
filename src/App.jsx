@@ -9,10 +9,10 @@ import GenderPicker from './components/GenderPicker'
 
 import GENDERS from './finals/GENDERS'
 
-import reducerRun from './reducers/reducerRun'
+import reducerRun from './reducers/garjas-a/reducerRun'
 import reducerPullUp from './reducers/reducerPullUp'
 import reducerChining from './reducers/reducerChining'
-import reducerSwim from './reducers/reducerSwim'
+import reducerSwim from './reducers/garjas-c/reducerSwim'
 
 function App() {
   const [gender, setGender] = useState(GENDERS.LELAKI)

@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import AppContext from '../context/AppContext'
 import FormGroup from './partials/FormGroup'
 
-import RUN from '../finals/RUN'
+import RUN from '../finals/garjas-a/RUN'
 import GarjasHeader from './partials/GarjasHeader'
 
 const GarjasA = () => {

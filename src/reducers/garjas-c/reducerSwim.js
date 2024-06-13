@@ -1,11 +1,11 @@
-import GENDERS from "../finals/GENDERS"
-import RUN from "../finals/RUN"
+import GENDERS from '../../finals/GENDERS'
+import SWIM from '../../finals/garjas-c/SWIM'
 
-const reducerRun = (state, action) => {
+const reducerSwim = (state, action) => {
   const buffer = action.value
   switch (action.type) {
     case GENDERS.LELAKI:
-      if (buffer >= RUN.LELAKI.MIN && buffer <= RUN.LELAKI.MAX)
+      if (buffer >= SWIM.LELAKI.MIN && buffer <= SWIM.LELAKI.MAX)
         return { value: buffer, score: calculate(buffer, action.type) }
       else
         return { value: -1 }
@@ -138,4 +138,4 @@ const calculate = (data, gender) => {
   }
 }
 
-export default reducerRun
+export default reducerSwim
