@@ -12,7 +12,7 @@ const GarjasA = () => {
   }
 
   return (
-    <section>
+    <section className='garjas'>
       <h3>Garjas A</h3>
       <FormGroup 
         data={distance}

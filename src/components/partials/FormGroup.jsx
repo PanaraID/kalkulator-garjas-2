@@ -15,7 +15,7 @@ const FormGroup = ({ data, gender, min, max, placeholder, onChange }) => {
       <input type='number' className='form-control' id={id} placeholder={data.value} onChange={onChange} />
       {help && (
         <div className='alert alert-danger' role='alert'>
-          Jarak untuk {gender} minimalnya adalah {min} dan maksimalnya adalah {max}
+          Jarak untuk {gender.toLowerCase()} minimalnya adalah {min} dan maksimalnya adalah {max}
         </div>
       )}
       {data.score > 0 && (
