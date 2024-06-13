@@ -4,6 +4,7 @@ import AppContext from '../context/AppContext'
 import FormGroup from './partials/FormGroup'
 
 import DISTANCE from '../finals/DISTANCE'
+import GarjasHeader from './partials/GarjasHeader'
 
 const GarjasC = () => {
   const { gender, distance, dispatchDistance } = useContext(AppContext)
@@ -14,7 +15,7 @@ const GarjasC = () => {
 
   return (
     <section className='garjas'>
-      <h3>Garjas B</h3>
+      <GarjasHeader title='Garjas C' />
       <FormGroup
         data={distance}
         gender={gender}
