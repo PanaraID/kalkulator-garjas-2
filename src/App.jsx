@@ -5,6 +5,7 @@ import AppContext from './context/AppContext'
 import GarjasA from './components/GarjasA'
 import GarjasB from './components/GarjasB'
 import GarjasC from './components/GarjasC'
+import Result from './components/Result'
 import GenderPicker from './components/GenderPicker'
 
 import GENDERS from './finals/GENDERS'
@@ -44,6 +45,7 @@ function App() {
         <GarjasA />
         <GarjasB />
         <GarjasC />
+        <Result />
       </AppContext.Provider>
     </Fragment>
   );
