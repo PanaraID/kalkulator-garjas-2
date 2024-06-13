@@ -8,15 +8,23 @@ import GarjasC from './components/GarjasC'
 import GenderPicker from './components/GenderPicker'
 
 import GENDERS from './finals/GENDERS'
+import { useReducer } from 'react'
 
+import reducerDistance from './reducers/reducerDistance'
 
 function App() {
   const [gender, setGender] = useState(GENDERS.LELAKI)
+  const [distance, dispatchDistance] = useReducer(reducerDistance, {value: 0})
 
   const context = {
     gender,
     setGender,
+
+    distance,
+    dispatchDistance,
   }
+
+  console.log(distance)
 
   return (
     <Fragment>
