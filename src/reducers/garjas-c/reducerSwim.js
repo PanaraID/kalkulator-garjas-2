@@ -10,7 +10,7 @@ const reducerSwim = (state, action) => {
       else
         return { value: -1 }
     case GENDERS.PEREMPUAN:
-      if (buffer >= 22 && buffer <= 3095)
+      if (buffer >= SWIM.PEREMPUAN.MAX && buffer <= SWIM.PEREMPUAN.MIN)
         return { value: calculate(buffer, action.type) }
       else
         return { value: -1 }
