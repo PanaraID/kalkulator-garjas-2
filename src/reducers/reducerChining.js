@@ -1,11 +1,11 @@
 import GENDERS from "../finals/GENDERS"
-import DISTANCE from "../finals/DISTANCE"
+import PULL_UP from "../finals/PULL_UP"
 
-const reducerDistance = (state, action) => {
+const reducerChining = (state, action) => {
   const buffer = action.value
   switch (action.type) {
     case GENDERS.LELAKI:
-      if (buffer >= DISTANCE.LELAKI.MIN && buffer <= DISTANCE.LELAKI.MAX)
+      if (buffer >= PULL_UP.LELAKI.MIN && buffer <= PULL_UP.LELAKI.MAX)
         return { value: buffer, score: calculate(buffer, action.type) }
       else
         return { value: -1 }
@@ -138,4 +138,4 @@ const calculate = (data, gender) => {
   }
 }
 
-export default reducerDistance
+export default reducerChining

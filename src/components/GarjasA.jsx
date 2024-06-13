@@ -3,25 +3,25 @@ import { useContext } from 'react'
 import AppContext from '../context/AppContext'
 import FormGroup from './partials/FormGroup'
 
-import DISTANCE from '../finals/DISTANCE'
+import RUN from '../finals/RUN'
 import GarjasHeader from './partials/GarjasHeader'
 
 const GarjasA = () => {
-  const { gender, distance, dispatchDistance } = useContext(AppContext)
+  const { gender, run, dispatchRun } = useContext(AppContext)
 
   const onChange = e => {
-    dispatchDistance({ type: gender, value: e.target.value })
+    dispatchRun({ type: gender, value: e.target.value })
   }
 
   return (
     <section className='garjas'>
       <GarjasHeader title='Garjas A' />
       <FormGroup 
-        data={distance}
+        data={run}
         gender={gender}
-        min={DISTANCE[gender.toUpperCase()].MIN}
-        max={DISTANCE[gender.toUpperCase()].MAX}
-        placeholder={"Masukkan jarak"}
+        min={RUN[gender.toUpperCase()].MIN}
+        max={RUN[gender.toUpperCase()].MAX}
+        placeholder={"Masukkan lari"}
         onChange={onChange}/>
     </section>
   )

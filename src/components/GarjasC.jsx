@@ -3,31 +3,25 @@ import { useContext } from 'react'
 import AppContext from '../context/AppContext'
 import FormGroup from './partials/FormGroup'
 
-import DISTANCE from '../finals/DISTANCE'
+import SWIM from '../finals/SWIM'
 import GarjasHeader from './partials/GarjasHeader'
 
 const GarjasC = () => {
-  const { gender, distance, dispatchDistance } = useContext(AppContext)
+  const { gender, swim, dispatchSwim } = useContext(AppContext)
 
   const onChange = e => {
-    dispatchDistance({ type: gender, value: e.target.value })
+    dispatchSwim({ type: gender, value: e.target.value })
   }
+  console.log(SWIM[gender.toUpperCase()].MIN)
 
   return (
     <section className='garjas'>
       <GarjasHeader title='Garjas C' />
       <FormGroup
-        data={distance}
+        data={swim}
         gender={gender}
-        min={DISTANCE[gender.toUpperCase()].MIN}
-        max={DISTANCE[gender.toUpperCase()].MAX}
-        placeholder={"Masukkan jarak"}
-        onChange={onChange} />
-      <FormGroup
-        data={distance}
-        gender={gender}
-        min={DISTANCE[gender.toUpperCase()].MIN}
-        max={DISTANCE[gender.toUpperCase()].MAX}
+        min={SWIM[gender.toUpperCase()].MIN + '°'}
+        max={SWIM[gender.toUpperCase()].MAX + '°'}
         placeholder={"Masukkan jarak"}
         onChange={onChange} />
     </section>
