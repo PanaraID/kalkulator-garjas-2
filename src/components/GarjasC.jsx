@@ -12,7 +12,6 @@ const GarjasC = () => {
   const onChange = e => {
     dispatchSwim({ type: gender, value: e.target.value })
   }
-  console.log(SWIM[gender.toUpperCase()].MIN)
 
   return (
     <section className='garjas'>
