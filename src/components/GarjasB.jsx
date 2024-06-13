@@ -3,8 +3,8 @@ import { useContext } from 'react'
 import AppContext from '../context/AppContext'
 import FormGroup from './partials/FormGroup'
 
-import PULL_UP from '../finals/PULL_UP'
-import CHINING from '../finals/CHINING'
+import PULL_UP from '../finals/garjas-b/PULL_UP'
+import CHINING from '../finals/garjas-b/CHINING'
 
 import GarjasHeader from './partials/GarjasHeader'
 import GENDERS from '../finals/GENDERS'

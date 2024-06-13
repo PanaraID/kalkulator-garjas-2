@@ -10,8 +10,8 @@ import GenderPicker from './components/GenderPicker'
 import GENDERS from './finals/GENDERS'
 
 import reducerRun from './reducers/garjas-a/reducerRun'
-import reducerPullUp from './reducers/reducerPullUp'
-import reducerChining from './reducers/reducerChining'
+import reducerPullUp from './reducers/garjas-b/reducerPullUp'
+import reducerChining from './reducers/garjas-b/reducerChining'
 import reducerSwim from './reducers/garjas-c/reducerSwim'
 
 function App() {
