@@ -20,9 +20,16 @@ const GarjasA = () => {
     <div className='form-group card p-2'>
       <h3>Garjas A</h3>
       <label htmlFor='inputDistance'>Masukkan jarak</label>
-      <input type='number' className='form-control' id='inputDistance' aria-describedby='distanceHelp' placeholder='Enter email' onChange={onChange} />
+      <input type='number' className='form-control' id='inputDistance' placeholder='Masukkan jarak' onChange={onChange} />
       {help && (
-        <small id='distanceHelp' className='form-text text-muted'>Jarak untuk {gender} minimalnya adalah {DISTANCE[gender.toUpperCase()].MIN} dan maksimalnya adalah {DISTANCE[gender.toUpperCase()].MAX}</small>
+        <div className='alert alert-danger' role='alert'>
+          Jarak untuk {gender} minimalnya adalah {DISTANCE[gender.toUpperCase()].MIN} dan maksimalnya adalah {DISTANCE[gender.toUpperCase()].MAX}
+        </div>
+      )}
+      {distance.score > 0 && (
+        <div className='alert alert-secondary' role='alert'>
+          Kamu mendapatkan score {distance.score}
+        </div>
       )}
     </div>
   )

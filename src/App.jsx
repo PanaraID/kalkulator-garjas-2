@@ -14,7 +14,7 @@ import reducerDistance from './reducers/reducerDistance'
 
 function App() {
   const [gender, setGender] = useState(GENDERS.LELAKI)
-  const [distance, dispatchDistance] = useReducer(reducerDistance, {value: 0})
+  const [distance, dispatchDistance] = useReducer(reducerDistance, {value: -1, score: 0})
 
   const context = {
     gender,
