@@ -22,7 +22,6 @@ function App() {
   const [chining, dispatchChining] = useReducer(reducerChining, {value: -1, score: 0})
   const [swim, dispatchSwim] = useReducer(reducerSwim, {value: -1, score: 0})
 
-
   const context = {
     gender, setGender,
 
