@@ -3,18 +3,11 @@ import CHINING from '../../finals/garjas-b/CHINING'
 
 const reducerChining = (state, action) => {
   const buffer = action.value
-  switch (action.type) {
-    case GENDERS.LELAKI:
-      if (buffer >= CHINING.LELAKI.MIN && buffer <= CHINING.LELAKI.MAX)
-        return { value: buffer, score: calculate(buffer, action.type) }
-      else
-        return { value: -1 }
-    case GENDERS.PEREMPUAN:
-      if (buffer >= 22 && buffer <= 3095)
-        return { value: calculate(buffer, action.type) }
-      else
-        return { value: -1 }
-  }
+
+  if (buffer >= CHINING.MIN && buffer <= CHINING.MAX)
+    return { value: buffer, score: calculate(buffer, action.type) }
+  else
+    return { value: -1 }
 }
 
 const calculate = (data, gender) => {
